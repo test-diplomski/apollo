@@ -17,7 +17,7 @@ jobs:
           uses: actions/checkout@v4
           with:
             repository: 'test-diplomski/magnetar'
-            path: '../magnetar'
+            path: 'magnetar'
           
         - name: Set up Go
           uses: actions/setup-go@v5
