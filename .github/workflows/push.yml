@@ -17,10 +17,7 @@ jobs:
           uses: actions/checkout@v4
           with:
             repository: 'test-diplomski/magnetar'
-            path: 'magnetar'
-
-        - name: Move magnetar to parent directory
-          run: mv magnetar ../magnetar
+            path: '../magnetar'
           
         - name: Set up Go
           uses: actions/setup-go@v5
@@ -29,9 +26,11 @@ jobs:
 
         - name: Install dependencies
           run: go mod download
+          working-directory: ./
 
         - name: Build
           run: go build -v ./...
+          working-directory: ./
   # docker:
   #   runs-on: ubuntu-latest
   #   needs: go-ci
