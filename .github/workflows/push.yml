@@ -38,9 +38,6 @@ jobs:
 
         - name: Update and tidy Go modules
           run: go mod tidy
-
-        - name: Update and tidy Go modules
-          run: go mod tidy
     
         - name: Install dependencies
           run: go mod download
