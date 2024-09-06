@@ -10,24 +10,55 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Check out code
+        - name: Check out main repository
           uses: actions/checkout@v4
-          with:
-            repository: 'test-diplomski/magnetar'
+          
+        # - name: Check additional repo
+        #   uses: actions/checkout@v4
+        #   with:
+        #     repository: 'test-diplomski/gravity'
+        #     path: 'gravity'
 
+        # - name: Move gravity to parent directory
+        #   run: mv gravity ../gravity
+
+        # - name: Check additional repo
+        #   uses: actions/checkout@v4
+        #   with:
+        #     repository: 'test-diplomski/meridian'
+        #     path: 'meridian'
+
+        # - name: Move meridian to parent directory
+        #   run: mv meridian ../meridian
+
+        # - name: Check additional repo
+        #   uses: actions/checkout@v4
+        #   with:
+        #     repository: 'test-diplomski/oort'
+        #     path: 'oort'
+
+        # - name: Move oort to parent directory
+        #   run: mv oort ../oort
+          
         - name: Set up Go
           uses: actions/setup-go@v5
           with:
-            go-version: '1.21.3'
+            go-version: '1.22.3'
+
+        - name: Update and tidy Go modules
+          run: go mod tidy
 
         - name: Install dependencies
           run: go mod download
+          working-directory: ./ 
 
         - name: Build
           run: go build -v ./...
+          working-directory: ./ 
   # docker:
   #   runs-on: ubuntu-latest
   #   needs: go-ci
+  #   if: github.repository == 'test-diplomski/apollo'
 
   #   steps:
   #     - name: Set up QEMU
@@ -48,4 +79,4 @@ jobs:
   #         context: .
   #         file: Dockerfile
   #         push: true
-  #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/magnetar:latest
+  #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/apollo:latest
