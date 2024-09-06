@@ -13,32 +13,14 @@ jobs:
         - name: Check out main repository
           uses: actions/checkout@v4
           
-        # - name: Check additional repo
-        #   uses: actions/checkout@v4
-        #   with:
-        #     repository: 'test-diplomski/gravity'
-        #     path: 'gravity'
+        - name: Check additional repo
+          uses: actions/checkout@v4
+          with:
+            repository: 'test-diplomski/magnetar'
+            path: 'magnetar'
 
-        # - name: Move gravity to parent directory
-        #   run: mv gravity ../gravity
-
-        # - name: Check additional repo
-        #   uses: actions/checkout@v4
-        #   with:
-        #     repository: 'test-diplomski/meridian'
-        #     path: 'meridian'
-
-        # - name: Move meridian to parent directory
-        #   run: mv meridian ../meridian
-
-        # - name: Check additional repo
-        #   uses: actions/checkout@v4
-        #   with:
-        #     repository: 'test-diplomski/oort'
-        #     path: 'oort'
-
-        # - name: Move oort to parent directory
-        #   run: mv oort ../oort
+        - name: Move magnetar to parent directory
+          run: mv magnetar ../magnetar
           
         - name: Set up Go
           uses: actions/setup-go@v5
